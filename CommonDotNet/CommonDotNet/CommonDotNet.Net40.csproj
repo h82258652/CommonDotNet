@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9725CFC8-BD4A-4789-827F-B105FA56E024}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common</RootNamespace>
+    <AssemblyName>CommonDotNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\net40\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;Net40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\net40\CommonDotNet.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\net40\</OutputPath>
+    <DefineConstants>TRACE;Net40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\net40\CommonDotNet.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CommonDotNet.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommonDotNet.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\CharExtension\CharExtension.cs" />
+    <Compile Include="System\CharExtension\CharExtension.IsChinese.cs" />
+    <Compile Include="System\CharExtension\CharExtension.IsDigit.cs" />
+    <Compile Include="System\CharExtension\CharExtension.IsHex.cs" />
+    <Compile Include="System\CharExtension\CharExtension.IsLower.cs" />
+    <Compile Include="System\CharExtension\CharExtension.IsNumber.cs" />
+    <Compile Include="System\CharExtension\CharExtension.IsUpper.cs" />
+    <Compile Include="System\Int64Extension\Int64Extension.cs" />
+    <Compile Include="System\Int64Extension\Int64Extension.IsPrime.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextBigInteger.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextBoolean.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextByte.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextBytes.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextChinese.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextDateTime.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextDecimal.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextDouble.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextEnum.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextInt16.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextInt32.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextInt64.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextSByte.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextSingle.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextString.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextUInt16.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextUInt32.cs" />
+    <Compile Include="System\RandomExtension\RandomExtension.NextUInt64.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextBigInteger.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextBoolean.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextByte.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextBytes.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextChinese.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextDateTime.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextDecimal.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextDouble.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextEnum.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextInt16.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextInt32.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextInt64.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextSByte.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextSingle.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextString.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextUInt16.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextUInt32.cs" />
+    <Compile Include="System\RandomHelper\RandomHelper.NextUInt64.cs" />
+    <Compile Include="System\Runtime\CompilerServices\CallerFilePathAttribute.cs" />
+    <Compile Include="System\Runtime\CompilerServices\CallerLineNumberAttribute.cs" />
+    <Compile Include="System\Runtime\CompilerServices\CallerMemberNameAttribute.cs" />
+    <Compile Include="System\StringExtension\StringExtension.AsInt16.cs" />
+    <Compile Include="System\StringExtension\StringExtension.AsInt32.cs" />
+    <Compile Include="System\StringExtension\StringExtension.AsInt64.cs" />
+    <Compile Include="System\StringExtension\StringExtension.Base64Decode.cs" />
+    <Compile Include="System\StringExtension\StringExtension.Base64Encode.cs" />
+    <Compile Include="System\StringExtension\StringExtension.Contains.cs" />
+    <Compile Include="System\StringExtension\StringExtension.ContainsAll.cs" />
+    <Compile Include="System\StringExtension\StringExtension.cs" />
+    <Compile Include="System\StringExtension\StringExtension.Equals.cs" />
+    <Compile Include="System\StringExtension\StringExtension.FormatWith.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsBigInteger.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsBoolean.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsByte.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsDateTime.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsDecimal.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsDouble.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsEmail.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsEnum.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsInt16.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsInt32.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsInt64.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsNullOrEmpty.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsNullOrWhiteSpace.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsSByte.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsSingle.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsUInt16.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsUInt32.cs" />
+    <Compile Include="System\StringExtension\StringExtension.IsUInt64.cs" />
+    <Compile Include="System\StringExtension\StringExtension.Replace.cs" />
+    <Compile Include="System\StringExtension\StringExtension.SwapCase.cs" />
+    <Compile Include="System\StringExtension\StringExtension.ToDbc.cs" />
+    <Compile Include="System\StringExtension\StringExtension.ToSBC.cs" />
+    <Compile Include="System\StringExtension\StringExtension.Trim.cs" />
+    <Compile Include="System\StringExtension\StringExtension.TrimEnd.cs" />
+    <Compile Include="System\StringExtension\StringExtension.TrimStart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\TypeExtension\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -59,6 +59,15 @@
     <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.cs" />
     <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.Deserialize.cs" />
     <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.SerializeToBytes.cs" />
+    <Compile Include="Serialization\Json\JsonConverter\JsonConverter.cs" />
+    <Compile Include="Serialization\Json\JsonConverter\JsonConverter.Deserialize.cs" />
+    <Compile Include="Serialization\Json\JsonConverter\JsonConverter.Serialize.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Exception\JsonStackOverFlowException\JsonStackOverFlowException.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Exception\JsonStackOverFlowException\JsonStackOverFlowException.GetObjectData.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Exception\JsonStackOverFlowException\JsonStackOverFlowException.MaxStackLevel.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Exception\JsonStackOverFlowException\JsonStackOverFlowException.ToString.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\JsonHelper.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Setting\JsonHelper.MaxStackLevel.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.Deserialize.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.SerializeToXmlFile.cs" />
@@ -154,7 +163,11 @@
     <Compile Include="System\TypeExtension\TypeExtension.cs" />
     <Compile Include="System\TypeExtension\TypeExtension.IsNullable.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Serialization\Json\JsonHelper\Cache\" />
+    <Folder Include="Serialization\Json\JsonHelper\Deserialize\" />
+    <Folder Include="Serialization\Json\JsonHelper\Serialize\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\MD5Helper\MD5Helper.cs" />
+    <Compile Include="Security\MD5Helper\MD5Helper.GetFileMD5.cs" />
+    <Compile Include="Security\MD5Helper\MD5Helper.GetStringMD5.cs" />
     <Compile Include="System\CharExtension\CharExtension.cs" />
     <Compile Include="System\CharExtension\CharExtension.IsChinese.cs" />
     <Compile Include="System\CharExtension\CharExtension.IsDigit.cs" />

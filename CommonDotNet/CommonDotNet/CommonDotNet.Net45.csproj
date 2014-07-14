@@ -56,6 +56,9 @@
     <Compile Include="Security\MD5Helper\MD5Helper.cs" />
     <Compile Include="Security\MD5Helper\MD5Helper.GetFileMD5.cs" />
     <Compile Include="Security\MD5Helper\MD5Helper.GetStringMD5.cs" />
+    <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.cs" />
+    <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.Deserialize.cs" />
+    <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.SerializeToBytes.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.Deserialize.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.SerializeToXmlFile.cs" />
@@ -151,9 +154,7 @@
     <Compile Include="System\TypeExtension\TypeExtension.cs" />
     <Compile Include="System\TypeExtension\TypeExtension.IsNullable.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Serialization\Binary\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

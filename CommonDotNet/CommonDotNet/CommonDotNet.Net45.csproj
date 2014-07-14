@@ -60,6 +60,9 @@
     <Compile Include="System\CharExtension\CharExtension.IsLower.cs" />
     <Compile Include="System\CharExtension\CharExtension.IsNumber.cs" />
     <Compile Include="System\CharExtension\CharExtension.IsUpper.cs" />
+    <Compile Include="System\Collections\Generic\IEnumerableExtension\IEnumerableExtension.cs" />
+    <Compile Include="System\Collections\Generic\IEnumerableExtension\IEnumerableExtension.IsEmpty.cs" />
+    <Compile Include="System\Collections\Generic\IEnumerableExtension\IEnumerableExtension.IsNotEmpty.cs" />
     <Compile Include="System\Int64Extension\Int64Extension.cs" />
     <Compile Include="System\Int64Extension\Int64Extension.IsPrime.cs" />
     <Compile Include="System\RandomExtension\RandomExtension.cs" />

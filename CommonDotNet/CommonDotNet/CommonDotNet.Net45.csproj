@@ -77,13 +77,7 @@
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.Deserialize.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.SerializeToXmlFile.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.SerializeToXmlStream.cs" />
-    <Compile Include="System\CharExtension\CharExtension.cs" />
-    <Compile Include="System\CharExtension\CharExtension.IsChinese.cs" />
-    <Compile Include="System\CharExtension\CharExtension.IsDigit.cs" />
-    <Compile Include="System\CharExtension\CharExtension.IsHex.cs" />
-    <Compile Include="System\CharExtension\CharExtension.IsLower.cs" />
-    <Compile Include="System\CharExtension\CharExtension.IsNumber.cs" />
-    <Compile Include="System\CharExtension\CharExtension.IsUpper.cs" />
+    <Compile Include="System\CharExtension.cs" />
     <Compile Include="System\Collections\Generic\IEnumerableExtension\IEnumerableExtension.cs" />
     <Compile Include="System\Collections\Generic\IEnumerableExtension\IEnumerableExtension.IsEmpty.cs" />
     <Compile Include="System\Collections\Generic\IEnumerableExtension\IEnumerableExtension.IsNotEmpty.cs" />

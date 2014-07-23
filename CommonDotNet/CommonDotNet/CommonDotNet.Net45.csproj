@@ -59,6 +59,8 @@
     <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.cs" />
     <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.Deserialize.cs" />
     <Compile Include="Serialization\Binary\BinarySerializerHelper\BinarySerializerHelper.SerializeToBytes.cs" />
+    <Compile Include="Serialization\Json\Formats\DateTimeFormat\DateTimeFormat.cs" />
+    <Compile Include="Serialization\Json\Formats\RegexFormat\RegexFormat.cs" />
     <Compile Include="Serialization\Json\JsonConverter\JsonConverter.cs" />
     <Compile Include="Serialization\Json\JsonConverter\JsonConverter.Deserialize.cs" />
     <Compile Include="Serialization\Json\JsonConverter\JsonConverter.Serialize.cs" />
@@ -67,6 +69,9 @@
     <Compile Include="Serialization\Json\JsonHelper\Exception\JsonStackOverFlowException\JsonStackOverFlowException.MaxStackLevel.cs" />
     <Compile Include="Serialization\Json\JsonHelper\Exception\JsonStackOverFlowException\JsonStackOverFlowException.ToString.cs" />
     <Compile Include="Serialization\Json\JsonHelper\JsonHelper.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Setting\JsonHelper.DateTimeFormat.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Serialize\JsonHelper.SerializeToJson.cs" />
+    <Compile Include="Serialization\Json\JsonHelper\Serialize\JsonSerializer.cs" />
     <Compile Include="Serialization\Json\JsonHelper\Setting\JsonHelper.MaxStackLevel.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.cs" />
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.Deserialize.cs" />
@@ -166,7 +171,6 @@
   <ItemGroup>
     <Folder Include="Serialization\Json\JsonHelper\Cache\" />
     <Folder Include="Serialization\Json\JsonHelper\Deserialize\" />
-    <Folder Include="Serialization\Json\JsonHelper\Serialize\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

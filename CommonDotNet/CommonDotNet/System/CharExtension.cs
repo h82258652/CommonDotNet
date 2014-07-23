@@ -1,4 +1,6 @@
-﻿namespace System
+﻿// ReSharper disable CheckNamespace
+namespace System
+// ReSharper restore CheckNamespace
 {
     /// <summary>
     /// Char 扩展类。

@@ -1,5 +1,7 @@
 ﻿// ReSharper disable CheckNamespace
+// ReSharper disable EmptyNamespace
 namespace System.Runtime.CompilerServices
+// ReSharper restore EmptyNamespace
 // ReSharper restore CheckNamespace
 {
 #if Net40

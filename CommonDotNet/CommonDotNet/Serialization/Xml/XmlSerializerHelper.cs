@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -29,8 +30,11 @@ namespace Common.Serialization.Xml
         /// <returns>反序列化的对象。</returns>
         public static T Deserialize<T>(string filePath)
         {
-            var xs = new XmlSerializer(typeof(T));
-            return (T)xs.Deserialize(File.OpenRead(filePath));
+            var xs = new XmlSerializer(typeof (T));
+            using (var fs = File.OpenRead(filePath))
+            {
+                return (T) xs.Deserialize(fs);
+            }
         }
 
         /// <summary>
@@ -63,6 +67,7 @@ namespace Common.Serialization.Xml
         /// <typeparam name="T">序列化的对象的类型。</typeparam>
         /// <param name="obj">序列化的对象。</param>
         /// <returns>序列化的 XML 内存流。</returns>
+        [SuppressMessage("Microsoft.Reliability","CA2000")]
         public static MemoryStream SerializeToXmlStream<T>(this T obj)
         {
             var xs = new XmlSerializer(typeof(T));

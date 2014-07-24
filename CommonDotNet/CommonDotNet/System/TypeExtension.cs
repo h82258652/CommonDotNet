@@ -5,7 +5,7 @@ namespace System
     /// <summary>
     /// Type 扩展类。
     /// </summary>
-    public static partial class TypeExtension
+    public static class TypeExtension
     {
         /// <summary>
         /// 指示类型是否为可空类型。

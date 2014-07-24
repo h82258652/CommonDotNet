@@ -326,12 +326,21 @@ namespace System
             return Double.TryParse(value, out d);
         }
 
+#if Net45
         /// <summary>
         /// 指示指定字符串是否为 E-mail 地址。
         /// </summary>
         /// <param name="value">当前 System.String 对象。</param>
         /// <returns>若符合 E-mail 格式，则为 true，否则为 false。</returns>
         /// <exception cref="RegexMatchTimeoutException">发生超时。</exception>
+#else
+        /// <summary>
+        /// 指示指定字符串是否为 E-mail 地址。
+        /// </summary>
+        /// <param name="value">当前 System.String 对象。</param>
+        /// <returns>若符合 E-mail 格式，则为 true，否则为 false。</returns>
+#endif
+
         public static bool IsEmail(this string value)
         {
             return value != null && Regex.IsMatch(value, @"^\S+@\S+\.\S+$");
@@ -569,7 +578,9 @@ namespace System
         /// <returns>转换后的字符串。</returns>
         /// <exception cref="ArgumentNullException"><c>value</c> 为 null。</exception>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
+// ReSharper disable InconsistentNaming
         public static string ToDBC(this string value)
+// ReSharper restore InconsistentNaming
         {
             if (value == null)
             {
@@ -604,7 +615,9 @@ namespace System
         /// <param name="value">需要转换的字符串。</param>
         /// <returns>转换后的字符串。</returns>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
+// ReSharper disable InconsistentNaming
         public static string ToDBCSafely(this string value)
+// ReSharper restore InconsistentNaming
         {
             return string.IsNullOrEmpty(value) ? value : ToDBC(value);
         }
@@ -616,7 +629,9 @@ namespace System
         /// <returns>转换后的字符串。</returns>
         /// <exception cref="ArgumentNullException"><c>value</c> 为 null。</exception>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
+// ReSharper disable InconsistentNaming
         public static string ToSBC(this string value)
+// ReSharper restore InconsistentNaming
         {
             if (value == null)
             {
@@ -651,7 +666,9 @@ namespace System
         /// <param name="value">需要转换的字符串。</param>
         /// <returns>转换后的字符串。</returns>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
+// ReSharper disable InconsistentNaming
         public static string ToSBCSafely(this string value)
+// ReSharper restore InconsistentNaming
         {
             return string.IsNullOrEmpty(value) ? value : ToSBC(value);
         }

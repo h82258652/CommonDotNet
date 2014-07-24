@@ -1,7 +1,11 @@
-﻿
+﻿// ReSharper disable CheckNamespace
 namespace System
+// ReSharper restore CheckNamespace
 {
-    public static partial class Int64Extension
+    /// <summary>
+    /// Int64 扩展类。
+    /// </summary>
+    public static class Int64Extension
     {
         /// <summary>
         /// 指示当前 64 位有符号整数是否为质数。

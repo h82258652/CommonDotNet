@@ -79,8 +79,7 @@
     <Compile Include="Serialization\Xml\XmlSerializerHelper\XmlSerializerHelper.SerializeToXmlStream.cs" />
     <Compile Include="System\CharExtension.cs" />
     <Compile Include="System\Collections\Generic\IEnumerableExtension.cs" />
-    <Compile Include="System\Int64Extension\Int64Extension.cs" />
-    <Compile Include="System\Int64Extension\Int64Extension.IsPrime.cs" />
+    <Compile Include="System\Int64Extension.cs" />
     <Compile Include="System\RandomExtension\RandomExtension.cs" />
     <Compile Include="System\RandomExtension\RandomExtension.NextBigInteger.cs" />
     <Compile Include="System\RandomExtension\RandomExtension.NextBoolean.cs" />

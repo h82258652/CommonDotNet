@@ -41,8 +41,9 @@ namespace System
         public static bool NextBoolean()
         {
             return Rand.NextBoolean();
-        } /// <summary>
-
+        } 
+        
+        /// <summary>
         /// 返回随机字节。
         /// </summary>
         /// <returns>小于 MaxValue 的无符号 8 位整数。</returns>

@@ -49,8 +49,8 @@ namespace Common.Serialization.Json
             get;
             set;
         }
-        
-        [SuppressMessage("Microsoft.Maintainability","CA1502")]
+
+        [SuppressMessage("Microsoft.Maintainability", "CA1502")]
         internal object DeserializeToObject(string input, Type type)
         {
             CurrentStackLevel++;
@@ -240,6 +240,16 @@ namespace Common.Serialization.Json
                 }
 
                 #endregion DateTime
+
+                #region DBNull
+
+                if (type == typeof(DBNull))
+                {
+                    obj = DeserializeToDBNull(input, type);
+                    break;
+                }
+
+                #endregion DBNull
 
                 #region Dictionary
 
@@ -799,6 +809,16 @@ namespace Common.Serialization.Json
                     throw new JsonDeserializeException(input, type);
                 }
                 return new DateTime(1970, 1, 1, 8, 0, 0).AddMilliseconds(ms);
+            }
+            throw new JsonDeserializeException(input, type);
+        }
+
+        [SuppressMessage("Microsoft.Performance", "CA1822")]
+        private DBNull DeserializeToDBNull(string input, Type type)
+        {
+            if (input == "null")
+            {
+                return DBNull.Value;
             }
             throw new JsonDeserializeException(input, type);
         }

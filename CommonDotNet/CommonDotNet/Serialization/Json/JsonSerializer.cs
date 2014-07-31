@@ -16,7 +16,22 @@ namespace Common.Serialization.Json
 {
     internal class JsonSerializer
     {
+        private StringBuilder _buffer = new StringBuilder();
+
         private int _currentStackLevel;
+
+        internal StringBuilder Buffer
+        {
+            get
+            {
+                // TODO build the next version by StringBuilder.
+                return _buffer;
+            }
+            set
+            {
+                _buffer = value;
+            }
+        }
 
         internal int CurrentStackLevel
         {
@@ -247,6 +262,16 @@ namespace Common.Serialization.Json
                 }
 
                 #endregion DateTime
+
+                #region DBNull
+
+                if (obj is DBNull)
+                {
+                    json = SerializeDBNull(obj);
+                    break;
+                }
+
+                #endregion DBNull
 
                 #region Dictionary
 
@@ -658,6 +683,15 @@ namespace Common.Serialization.Json
             }
         }
 
+        // ReSharper disable UnusedParameter.Local
+        [SuppressMessage("Microsoft.Usage", "CA1801")]
+        [SuppressMessage("Microsoft.Performance", "CA1822")]
+        private string SerializeDBNull(object value)
+        // ReSharper restore UnusedParameter.Local
+        {
+            return "null";
+        }
+
         [SuppressMessage("Microsoft.Performance", "CA1822")]
         private string SerializeDecimal(decimal d)
         {
@@ -666,13 +700,23 @@ namespace Common.Serialization.Json
 
         private string SerializeDictionary(IDictionary dictionary)
         {
-            var values = new List<string>();
             var enumerator = dictionary.GetEnumerator();
-            while (enumerator.MoveNext())
+            var sb = new StringBuilder("{");
+            if (enumerator.MoveNext())
             {
-                values.Add(SerializeObject(enumerator.Key) + ":" + SerializeObject(enumerator.Value));
+                sb.Append(SerializeObject(enumerator.Key));
+                sb.Append(':');
+                sb.Append(SerializeObject(enumerator.Value));
+                while (enumerator.MoveNext())
+                {
+                    sb.Append(',');
+                    sb.Append(SerializeObject(enumerator.Key));
+                    sb.Append(':');
+                    sb.Append(SerializeObject(enumerator.Value));
+                }
             }
-            return "{" + string.Join(",", values) + "}";
+            sb.Append('}');
+            return sb.ToString();
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1822")]
@@ -708,13 +752,19 @@ namespace Common.Serialization.Json
 
         private string SerializeIEnumerable(IEnumerable enumerable)
         {
-            var values = new List<string>();
             var enumerator = enumerable.GetEnumerator();
-            while (enumerator.MoveNext())
+            var sb = new StringBuilder("[");
+            if (enumerator.MoveNext())
             {
-                values.Add(SerializeObject(enumerator.Current));
+                sb.Append(SerializeObject(enumerator.Current));
+                while (enumerator.MoveNext())
+                {
+                    sb.Append(',');
+                    sb.Append(SerializeObject(enumerator.Current));
+                }
             }
-            return '[' + string.Join(",", values) + ']';
+            sb.Append(']');
+            return sb.ToString();
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1822")]
@@ -800,43 +850,50 @@ namespace Common.Serialization.Json
         private string SerializeString(string s)
         {
             var sb = new StringBuilder("\"");
-            foreach (char c in s)
+            foreach (var c in s)
             {
                 switch (c)
                 {
                     case '\"':
                         {
-                            sb.Append("\\\"");
+                            sb.Append('\\');
+                            sb.Append('\"');
                             break;
                         }
                     case '\\':
                         {
-                            sb.Append("\\\\");
+                            sb.Append('\\');
+                            sb.Append('\\');
                             break;
                         }
                     case '\b':
                         {
-                            sb.Append("\\b");
+                            sb.Append('\\');
+                            sb.Append('b');
                             break;
                         }
                     case '\f':
                         {
-                            sb.Append("\\f");
+                            sb.Append('\\');
+                            sb.Append('f');
                             break;
                         }
                     case '\n':
                         {
-                            sb.Append("\\n");
+                            sb.Append('\\');
+                            sb.Append('n');
                             break;
                         }
                     case '\r':
                         {
-                            sb.Append("\\r");
+                            sb.Append('\\');
+                            sb.Append('r');
                             break;
                         }
                     case '\t':
                         {
-                            sb.Append("\\t");
+                            sb.Append('\\');
+                            sb.Append('t');
                             break;
                         }
                     default:
@@ -846,7 +903,7 @@ namespace Common.Serialization.Json
                         }
                 }
             }
-            sb.Append("\"");
+            sb.Append('\"');
             return sb.ToString();
         }
 

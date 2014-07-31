@@ -62,6 +62,8 @@ namespace Common.Serialization.Json
             {
                 #region null
 
+                // TODO test 0 zero length string deserialize.
+
                 if (input == "null")
                 {
                     obj = null;
@@ -345,15 +347,38 @@ namespace Common.Serialization.Json
 
         private static bool IsHex(char value)
         {
-            if (value >= '0' && value <= '9')
+            switch (value)
             {
-                return true;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                case 'a':
+                case 'b':
+                case 'c':
+                case 'd':
+                case 'e':
+                case 'f':
+                case 'A':
+                case 'B':
+                case 'C':
+                case 'D':
+                case 'E':
+                case 'F':
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
             }
-            if (value >= 'a' && value <= 'f')
-            {
-                return true;
-            }
-            return value >= 'A' && value <= 'F';
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1822")]
@@ -370,15 +395,27 @@ namespace Common.Serialization.Json
         [SuppressMessage("Microsoft.Performance", "CA1822")]
         private bool DeserializeToBoolean(string input, Type type)
         {
-            switch (input)
+            if (string.IsNullOrEmpty(input))
             {
-                case "true":
+                throw new JsonDeserializeException(input, type);
+            }
+            switch (input[0])
+            {
+                case 't':
                     {
-                        return true;
+                        if (input.Length == 4 && input[1] == 'r' && input[2] == 'u' && input[3] == 'e')
+                        {
+                            return true;
+                        }
+                        throw new JsonDeserializeException(input, type);
                     }
-                case "false":
+                case 'f':
                     {
-                        return false;
+                        if (input.Length == 5 && input[1] == 'a' && input[2] == 'l' && input[3] == 's' && input[4] == 'e')
+                        {
+                            return false;
+                        }
+                        throw new JsonDeserializeException(input, type);
                     }
                 default:
                     {
@@ -401,64 +438,73 @@ namespace Common.Serialization.Json
         [SuppressMessage("Microsoft.Performance", "CA1822")]
         private char DeserializeToChar(string input, Type type)
         {
-            if (input.StartsWith("\"", StringComparison.Ordinal) && input.EndsWith("\"", StringComparison.Ordinal))
+            if (input == null || input.Length < 2)
             {
-                var source = input;
-                input = input.Substring(1, input.Length - 2);
-                if (input == "\\\"")
+                throw new JsonDeserializeException(input, type);
+            }
+            if (input[0] != '\"')
+            {
+                throw new JsonDeserializeException(input, type);
+            }
+            if (input[input.Length - 1] != '\"')
+            {
+                throw new JsonDeserializeException(input, type);
+            }
+
+            var source = input;
+            input = input.Substring(1, input.Length - 2);
+            if (input == "\\\"")
+            {
+                return '\"';
+            }
+            if (input == "\\\\")
+            {
+                return '\\';
+            }
+            if (input == "\\b")
+            {
+                return '\b';
+            }
+            if (input == "\\f")
+            {
+                return '\f';
+            }
+            if (input == "\\n")
+            {
+                return '\n';
+            }
+            if (input == "\\r")
+            {
+                return '\r';
+            }
+            if (input == "\\t")
+            {
+                return '\t';
+            }
+            if (input.StartsWith("\\u", StringComparison.Ordinal))
+            {
+                input = input.Substring(2);
+                if (input.Length == 4)
                 {
-                    return '\"';
-                }
-                if (input == "\\\\")
-                {
-                    return '\\';
-                }
-                if (input == "\\b")
-                {
-                    return '\b';
-                }
-                if (input == "\\f")
-                {
-                    return '\f';
-                }
-                if (input == "\\n")
-                {
-                    return '\n';
-                }
-                if (input == "\\r")
-                {
-                    return '\r';
-                }
-                if (input == "\\t")
-                {
-                    return '\t';
-                }
-                if (input.StartsWith("\\u", StringComparison.Ordinal))
-                {
-                    input = input.Substring(2);
-                    if (input.Length == 4)
+                    var c0 = input[0];
+                    var c1 = input[1];
+                    var c2 = input[2];
+                    var c3 = input[3];
+                    if (IsHex(c0) && IsHex(c1) && IsHex(c2) && IsHex(c3))
                     {
-                        var c0 = input[0];
-                        var c1 = input[1];
-                        var c2 = input[2];
-                        var c3 = input[3];
-                        if (IsHex(c0) && IsHex(c1) && IsHex(c2) && IsHex(c3))
-                        {
-                            var b0 = Convert.ToByte(c2.ToString(CultureInfo.InvariantCulture) + c3.ToString(CultureInfo.InvariantCulture), 16);
-                            var b1 = Convert.ToByte(c0.ToString(CultureInfo.InvariantCulture) + c1.ToString(CultureInfo.InvariantCulture), 16);
-                            return Encoding.Unicode.GetChars(new[] { b0, b1 })[0];
-                        }
-                        throw new JsonDeserializeException(source, type);
+                        var b0 = Convert.ToByte(c2.ToString(CultureInfo.InvariantCulture) + c3.ToString(CultureInfo.InvariantCulture), 16);
+                        var b1 = Convert.ToByte(c0.ToString(CultureInfo.InvariantCulture) + c1.ToString(CultureInfo.InvariantCulture), 16);
+                        return Encoding.Unicode.GetChars(new[] { b0, b1 })[0];
                     }
                     throw new JsonDeserializeException(source, type);
                 }
-                if (input.Length == 1)
-                {
-                    return input[0];
-                }
                 throw new JsonDeserializeException(source, type);
             }
-            throw new JsonDeserializeException(input, type);
+            if (input.Length == 1)
+            {
+                return input[0];
+            }
+            throw new JsonDeserializeException(source, type);
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031")]

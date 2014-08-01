@@ -1,33 +1,33 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Common.Serialization.Json.Exception
+namespace Common.Serialization.Json
 {
     /// <summary>
     /// JSON 序列化或反序列化时超出指定的深度时产生的异常。
     /// </summary>
     [Serializable]
-    public sealed class JsonStackOverFlowException : System.Exception, ISerializable
+    public sealed class JsonStackOverFlowException : JsonException, ISerializable
     {
         /// <summary>
-        /// 初始化 Common.Serialization.Json.Exception.JsonStackOverFlowException 类的新实例。
+        /// 初始化 Common.Serialization.Json.JsonStackOverFlowException 类的新实例。
         /// </summary>
         public JsonStackOverFlowException()
         {
         }
 
         /// <summary>
-        /// 使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 Common.Serialization.Json.Exception.JsonStackOverFlowException 类的新实例。
+        /// 使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 Common.Serialization.Json.JsonStackOverFlowException 类的新实例。
         /// </summary>
         /// <param name="message">解释异常原因的错误信息。</param>
         /// <param name="innerException">导致当前异常的异常；如果未指定内部异常，则是一个 null 引用（在 Visual Basic 中为 Nothing）。</param>
-        public JsonStackOverFlowException(string message, System.Exception innerException)
+        public JsonStackOverFlowException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
         /// <summary>
-        /// 使用指定的错误信息初始化 System.Exception 类的新实例。
+        /// 使用指定的错误信息初始化 Common.Serialization.Json.JsonStackOverFlowException 类的新实例。
         /// </summary>
         /// <param name="message">描述错误的消息。</param>
         public JsonStackOverFlowException(string message)

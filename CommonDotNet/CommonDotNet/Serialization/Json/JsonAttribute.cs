@@ -15,8 +15,8 @@ namespace Common.Serialization.Json
         /// </summary>
         public JsonAttribute()
         {
-            CountGreaterThan = -1;
-            CountLessThan = -1;
+            CountMustGreaterThan = -1;
+            CountMustLessThan = -1;
         }
 
         /// <summary>
@@ -42,18 +42,18 @@ namespace Common.Serialization.Json
         }
 
         /// <summary>
-        /// 约束在序列化时字符串或数组或集合的元素个数必须大于指定值。小于零为不约束。默认为 -1。
+        /// 约束在序列化时字符串或数组或集合的元素个数必须大于指定值。小于零为不约束。默认为 -1。当对象为 null 时，此标签属性不作用。
         /// </summary>
-        public int CountGreaterThan
+        public int CountMustGreaterThan
         {
             get;
             set;
         }
 
         /// <summary>
-        /// 约束在序列化时字符串或数组或集合的元素个数必须小于指定值。小于零为不约束。默认为 -1。
+        /// 约束在序列化时字符串或数组或集合的元素个数必须小于指定值。小于零为不约束。默认为 -1。当对象为 null 时，此标签属性不作用。
         /// </summary>
-        public int CountLessThan
+        public int CountMustLessThan
         {
             get;
             set;

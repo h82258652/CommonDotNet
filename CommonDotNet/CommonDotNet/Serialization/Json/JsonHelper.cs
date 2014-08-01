@@ -1,8 +1,6 @@
-﻿using Common.Serialization.Json.Exception;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
 using System.Text;
 
 namespace Common.Serialization.Json
@@ -12,15 +10,6 @@ namespace Common.Serialization.Json
     /// </summary>
     public static class JsonHelper
     {
-        /// <summary>
-        /// 缓存类的字段。
-        /// </summary>
-        internal static volatile Dictionary<Type, FieldInfo[]> TypeFields = new Dictionary<Type, FieldInfo[]>();
-
-        /// <summary>
-        /// 缓存类的属性。
-        /// </summary>
-        internal static volatile Dictionary<Type, PropertyInfo[]> TypeProperties = new Dictionary<Type, PropertyInfo[]>();
 
         private static DateTimeFormat _dateTimeFormat = DateTimeFormat.Default;
 
@@ -129,12 +118,13 @@ namespace Common.Serialization.Json
         /// <exception cref="JsonDeserializeException">JSON 格式错误时产生。</exception>
         public static object Deserialize(string input, Type type)
         {
-            var deserializer = new JsonDeserializer
-            {
-                MaxStackLevel = MaxStackLevel
-            };
+            return null;
+            //var deserializer = new JsonDeserializer
+            //{
+            //    MaxStackLevel = MaxStackLevel
+            //};
 
-            return deserializer.DeserializeToObject(input, type);
+            //return deserializer.DeserializeToObject(input, type);
         }
 
         /// <summary>
@@ -247,7 +237,7 @@ namespace Common.Serialization.Json
         /// <returns>序列化的 JSON 字符串。</returns>
         public static string SerializeToJson(this object value)
         {
-            var serializer = new JsonSerializer
+            var serializer = new JsonSerializerV2
             {
                 DateTimeFormat = DateTimeFormat,
                 EnumFormat = EnumFormat,
@@ -256,7 +246,17 @@ namespace Common.Serialization.Json
             };
 
             // 序列化。
-            var json = serializer.SerializeObject(value);
+            var json = serializer.GetSerializeResult(value);
+
+            //var serializer = new JsonSerializer
+            //{
+            //    DateTimeFormat = DateTimeFormat,
+            //    EnumFormat = EnumFormat,
+            //    RegexFormat = RegexFormat,
+            //    MaxStackLevel = MaxStackLevel
+            //};
+
+            //var json = serializer.SerializeObject(value);
 
             // 格式化。
             json = FormatJson(json);
@@ -272,47 +272,48 @@ namespace Common.Serialization.Json
         /// <exception cref="ArgumentNullException"><c>json</c> 为 null。</exception>
         public static Type TypeInference(string json)
         {
-            if (json==null)
-            {
-                throw new ArgumentNullException("json");
-            }
-            json = json.Trim();
-            if (json.StartsWith("[",StringComparison.Ordinal) && json.EndsWith("]",StringComparison.Ordinal))
-            {
-                return typeof(Array);
-            }
-            if (json.StartsWith("\"",StringComparison.Ordinal) && json.EndsWith("\"",StringComparison.Ordinal))
-            {
-                if (JsonDeserializer.DateTimeDefaultRegex.IsMatch(json))
-                {
-                    return typeof(DateTime);
-                }
-                return JsonDeserializer.DateTimeFunctionRegex.IsMatch(json) ? typeof(DateTime) : typeof(string);
-            }
-            if (json.StartsWith("{", StringComparison.Ordinal) && json.EndsWith("}", StringComparison.Ordinal))
-            {
-                return typeof(object);
-            }
-            if (json == "true" || json == "false")
-            {
-                return typeof(bool);
-            }
-            if (json == "null")
-            {
-                return typeof(object);
-            }
-            if (JsonDeserializer.DateTimeCreateRegex.IsMatch(json))
-            {
-                return typeof(DateTime);
-            }
-            int i;
-            if (int.TryParse(json, out i))
-            {
-                return typeof(int);
-            }
-            double d;
+            return null;
+            //if (json == null)
+            //{
+            //    throw new ArgumentNullException("json");
+            //}
+            //json = json.Trim();
+            //if (json.StartsWith("[", StringComparison.Ordinal) && json.EndsWith("]", StringComparison.Ordinal))
+            //{
+            //    return typeof(Array);
+            //}
+            //if (json.StartsWith("\"", StringComparison.Ordinal) && json.EndsWith("\"", StringComparison.Ordinal))
+            //{
+            //    if (JsonDeserializer.DateTimeDefaultRegex.IsMatch(json))
+            //    {
+            //        return typeof(DateTime);
+            //    }
+            //    return JsonDeserializer.DateTimeFunctionRegex.IsMatch(json) ? typeof(DateTime) : typeof(string);
+            //}
+            //if (json.StartsWith("{", StringComparison.Ordinal) && json.EndsWith("}", StringComparison.Ordinal))
+            //{
+            //    return typeof(object);
+            //}
+            //if (json == "true" || json == "false")
+            //{
+            //    return typeof(bool);
+            //}
+            //if (json == "null")
+            //{
+            //    return typeof(object);
+            //}
+            //if (JsonDeserializer.DateTimeCreateRegex.IsMatch(json))
+            //{
+            //    return typeof(DateTime);
+            //}
+            //int i;
+            //if (int.TryParse(json, out i))
+            //{
+            //    return typeof(int);
+            //}
+            //double d;
 
-            return double.TryParse(json, out d) ? typeof(double) : null;
+            //return double.TryParse(json, out d) ? typeof(double) : null;
         }
 
         internal static IEnumerable<string> ItemReader(string input)
@@ -403,7 +404,7 @@ namespace Common.Serialization.Json
             key = key.Trim();
             value = value.Trim();
         }
-  
+
         /// <summary>
         /// 为当前字符串创建缩进。
         /// </summary>

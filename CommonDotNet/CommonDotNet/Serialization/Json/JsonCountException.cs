@@ -2,30 +2,27 @@
 using System.Collections;
 using System.Runtime.Serialization;
 
-namespace Common.Serialization.Json.Exception
+namespace Common.Serialization.Json
 {
     /// <summary>
     /// 表示 JSON 序列化时字符串或数组或集合的元素个数有误。
     /// </summary>
     [Serializable]
-    public sealed class JsonCountException : System.Exception, ISerializable
+    public sealed class JsonCountException : JsonSerializeException, ISerializable
     {
         private int _greaterThan = -1;
 
         private int _lessThan = -1;
 
         /// <summary>
-        /// 使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 Common.Serialization.Json.Exception.JsonCountException 类的新实例。
+        /// 初始化 Common.Serialization.Json.JsonCountException 类的新实例。
         /// </summary>
-        /// <param name="message">解释异常原因的错误信息。</param>
-        /// <param name="innerException">导致当前异常的异常；如果未指定内部异常，则是一个 null 引用（在 Visual Basic 中为 Nothing）。</param>
-        public JsonCountException(string message, System.Exception innerException)
-            : base(message, innerException)
+        public JsonCountException()
         {
         }
 
         /// <summary>
-        /// 使用指定的错误信息初始化 Common.Serialization.Json.Exception.JsonCountException 类的新实例。
+        /// 使用指定的错误信息初始化 Common.Serialization.Json.JsonCountException 类的新实例。
         /// </summary>
         /// <param name="message">描述错误的消息。</param>
         public JsonCountException(string message)
@@ -34,9 +31,12 @@ namespace Common.Serialization.Json.Exception
         }
 
         /// <summary>
-        /// 初始化 Common.Serialization.Json.Exception.JsonCountException 类的新实例。
+        /// 使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 Common.Serialization.Json.JsonCountException 类的新实例。
         /// </summary>
-        public JsonCountException()
+        /// <param name="message">解释异常原因的错误信息。</param>
+        /// <param name="innerException">导致当前异常的异常；如果未指定内部异常，则是一个 null 引用（在 Visual Basic 中为 Nothing）。</param>
+        public JsonCountException(string message, Exception innerException)
+            : base(message, innerException)
         {
         }
 
@@ -115,10 +115,9 @@ namespace Common.Serialization.Json.Exception
             return base.ToString();
         }
 
-        internal static JsonCountException CreateGreaterThanException(IEnumerable source, int greaterThan
+        internal static JsonCountException CreateCountMustGreaterThanException(IEnumerable source, int greaterThan
             )
         {
-
             return new JsonCountException
             {
                 SourceObject = source,
@@ -127,7 +126,7 @@ namespace Common.Serialization.Json.Exception
             };
         }
 
-        internal static JsonCountException CreateLessThanException(IEnumerable source, int lessThan)
+        internal static JsonCountException CreateCountMustLessThanException(IEnumerable source, int lessThan)
         {
             return new JsonCountException
             {

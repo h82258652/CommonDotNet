@@ -395,7 +395,12 @@ namespace Common.Serialization.Json
         [SuppressMessage("Microsoft.Performance", "CA1822")]
         private bool DeserializeToBoolean(string input, Type type)
         {
-            if (string.IsNullOrEmpty(input))
+            if (input == null)
+            {
+                throw new JsonDeserializeException(null, type);
+            }
+            var length = input.Length;
+            if (length == 0)
             {
                 throw new JsonDeserializeException(input, type);
             }
@@ -403,7 +408,7 @@ namespace Common.Serialization.Json
             {
                 case 't':
                     {
-                        if (input.Length == 4 && input[1] == 'r' && input[2] == 'u' && input[3] == 'e')
+                        if (length == 4 && input[1] == 'r' && input[2] == 'u' && input[3] == 'e')
                         {
                             return true;
                         }
@@ -411,7 +416,7 @@ namespace Common.Serialization.Json
                     }
                 case 'f':
                     {
-                        if (input.Length == 5 && input[1] == 'a' && input[2] == 'l' && input[3] == 's' && input[4] == 'e')
+                        if (length == 5 && input[1] == 'a' && input[2] == 'l' && input[3] == 's' && input[4] == 'e')
                         {
                             return false;
                         }

@@ -127,6 +127,18 @@ namespace System.Reflection
             return (T)GetCustomAttribute(element, typeof(T));
         }
 
+        /// <summary>
+        /// 检索应用于指定成员的指定类型的自定义特性，并可选择检查该成员的上级。
+        /// </summary>
+        /// <param name="element">要检查的成员。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <param name="inherit">如果检查 <c>element</c> 的上级，则为 true；否则为 false。</param>
+        /// <returns>与 <c>attributeType</c> 匹配的自定义特性，如果未找到此类特性，则为 null。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
+        /// <exception cref="AmbiguousMatchException">找到多个请求的属性。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static Attribute GetCustomAttribute(this MemberInfo element, Type attributeType, bool inherit)
         {
             return Attribute.GetCustomAttribute(element, attributeType, inherit);

@@ -9,7 +9,7 @@ namespace System
     /// </summary>
     public static class RandomHelper
     {
-        private static readonly RandomExtension Rand = new RandomExtension();
+        private static readonly RandomExtensions Rand = new RandomExtensions();
 
         /// <summary>
         /// 返回一个小于所指定最大值的非负随机数。

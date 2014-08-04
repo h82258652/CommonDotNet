@@ -12,7 +12,7 @@ namespace System
     /// <summary>
     /// String 扩展类。
     /// </summary>
-    public static class StringExtension
+    public static class StringExtensions
     {
         /// <summary>
         /// 将当前字符串转换为 16 位有符号整数。

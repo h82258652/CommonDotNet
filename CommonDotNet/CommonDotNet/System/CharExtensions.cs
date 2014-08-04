@@ -5,7 +5,7 @@ namespace System
     /// <summary>
     /// Char 扩展类。
     /// </summary>
-    public static class CharExtension
+    public static class CharExtensions
     {
         /// <summary>
         /// 指示当前字符是否属于中文字符。

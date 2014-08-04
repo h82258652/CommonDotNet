@@ -1,10 +1,8 @@
-﻿// ReSharper disable CheckNamespace
-// ReSharper disable EmptyNamespace
+﻿#if Net40
+// ReSharper disable CheckNamespace
 namespace System.Runtime.CompilerServices
-// ReSharper restore EmptyNamespace
 // ReSharper restore CheckNamespace
 {
-#if Net40
     /// <summary>
     /// 允许您获取该方法的调用者方法或属性名称。（需在 Visual Studio 2012 以上使用。）
     /// </summary>
@@ -12,5 +10,5 @@ namespace System.Runtime.CompilerServices
     public sealed class CallerMemberNameAttribute : Attribute
     {
     }
-#endif
 }
+#endif

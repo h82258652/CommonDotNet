@@ -5,7 +5,7 @@ namespace System
     /// <summary>
     /// Int64 扩展类。
     /// </summary>
-    public static class Int64Extension
+    public static class Int64Extensions
     {
         /// <summary>
         /// 指示当前 64 位有符号整数是否为质数。

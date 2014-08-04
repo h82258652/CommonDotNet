@@ -8,7 +8,7 @@ namespace System.Collections.Generic
     /// IEnumerable 扩展类。
     /// </summary>
     // ReSharper disable InconsistentNaming
-    public static class IEnumerableExtension
+    public static class IEnumerableExtensions
     // ReSharper restore InconsistentNaming
     {
         /// <summary>

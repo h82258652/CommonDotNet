@@ -118,13 +118,12 @@ namespace Common.Serialization.Json
         /// <exception cref="JsonDeserializeException">JSON 格式错误时产生。</exception>
         public static object Deserialize(string input, Type type)
         {
-            return null;
-            //var deserializer = new JsonDeserializer
-            //{
-            //    MaxStackLevel = MaxStackLevel
-            //};
+            var deserializer = new JsonDeserializer
+            {
+                MaxStackLevel = MaxStackLevel
+            };
 
-            //return deserializer.DeserializeToObject(input, type);
+            return deserializer.DeserializeToObject(input, type);
         }
 
         /// <summary>
@@ -237,7 +236,7 @@ namespace Common.Serialization.Json
         /// <returns>序列化的 JSON 字符串。</returns>
         public static string SerializeToJson(this object value)
         {
-            var serializer = new JsonSerializerV2
+            var serializer = new JsonSerializer
             {
                 DateTimeFormat = DateTimeFormat,
                 EnumFormat = EnumFormat,
@@ -246,17 +245,7 @@ namespace Common.Serialization.Json
             };
 
             // 序列化。
-            var json = serializer.GetSerializeResult(value);
-
-            //var serializer = new JsonSerializer
-            //{
-            //    DateTimeFormat = DateTimeFormat,
-            //    EnumFormat = EnumFormat,
-            //    RegexFormat = RegexFormat,
-            //    MaxStackLevel = MaxStackLevel
-            //};
-
-            //var json = serializer.SerializeObject(value);
+            var json = serializer.SerializeToJson(value);
 
             // 格式化。
             json = FormatJson(json);

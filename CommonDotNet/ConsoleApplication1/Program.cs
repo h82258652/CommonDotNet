@@ -16,18 +16,14 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
-            var test = new Test();
-            test.A = 5;
-            test.B = "ggggo   aaa";
-            test.C = DateTime.Now;
-            test.D = new List<double>();
-            test.D.Add(2.5);
-            test.D.Add(8.6443);
-
-            Console.WriteLine(JsonHelper.SerializeToJson(test));
-
-            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(test));
-
+            Lazy<int> l = new Lazy<int>(() =>
+            {
+                return DateTime.Now.Second;
+            });
+            string s1 = l.SerializeToJson();
+            string s2 = JsonConvert.SerializeObject(l);
+            Console.WriteLine(s1);
+            Console.WriteLine(s2);
             Console.ReadKey();
         }
     }

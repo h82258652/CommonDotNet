@@ -1,8 +1,8 @@
-﻿// ReSharper disable CheckNamespace
+﻿#if Net40
+// ReSharper disable CheckNamespace
 namespace System.Runtime.CompilerServices
 // ReSharper restore CheckNamespace
 {
-#if Net40
     /// <summary>
     /// 允许您获取调用了方法的源文件的行号。（需在 Visual Studio 2012 以上使用。）
     /// </summary>
@@ -10,5 +10,5 @@ namespace System.Runtime.CompilerServices
     public sealed class CallerLineNumberAttribute : Attribute
     {
     }
-#endif
 }
+#endif

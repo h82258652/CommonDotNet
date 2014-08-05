@@ -258,6 +258,15 @@ namespace System.Reflection
             return Attribute.GetCustomAttributes(element, inherit);
         }
 
+        /// <summary>
+        /// 检索应用于指定参数的自定义特性集合，并可选择检查该参数的上级。
+        /// </summary>
+        /// <param name="element">要检查的参数。</param>
+        /// <param name="inherit">如果检查 <c>element</c> 的上级，则为 true；否则为 false。</param>
+        /// <returns>将应用于 <c>element</c> 的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 为 null。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this ParameterInfo element, bool inherit)
         {
             return Attribute.GetCustomAttributes(element, inherit);
@@ -266,6 +275,14 @@ namespace System.Reflection
         #endregion
 
         #region APIs that return all attributes of a particular type
+        /// <summary>
+        /// 检索应用于指定程序集的指定类型的自定义特性集合。
+        /// </summary>
+        /// <param name="element">要检查的程序集。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <returns>将应用于与 <c>element</c> 并与 <c>attributeType</c> 匹配的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this Assembly element, Type attributeType)
         {
             return Attribute.GetCustomAttributes(element, attributeType);

@@ -144,6 +144,17 @@ namespace System.Reflection
             return Attribute.GetCustomAttribute(element, attributeType, inherit);
         }
 
+        /// <summary>
+        /// 检索应用于指定参数的指定类型的自定义特性，并可选择检查该参数的上级。
+        /// </summary>
+        /// <param name="element">要检查的参数。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <param name="inherit">如果检查 <c>element</c> 的上级，则为 true；否则为 false。</param>
+        /// <returns>匹配 <c>attributeType</c> 的自定义特性，如果未找到此类特性，则为 null。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
+        /// <exception cref="AmbiguousMatchException">找到多个请求的属性。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static Attribute GetCustomAttribute(this ParameterInfo element, Type attributeType, bool inherit)
         {
             return Attribute.GetCustomAttribute(element, attributeType, inherit);
@@ -185,26 +196,63 @@ namespace System.Reflection
 
         #region APIs that return all attributes
 
+        /// <summary>
+        /// 检索应用于指定程序集的自定义特性集合。
+        /// </summary>
+        /// <param name="element">要检查的程序集。</param>
+        /// <returns>将应用于 <c>element</c> 的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 为 null。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this Assembly element)
         {
             return Attribute.GetCustomAttributes(element);
         }
 
+        /// <summary>
+        /// 检索应用于指定模块的自定义特性集合。
+        /// </summary>
+        /// <param name="element">要检查的模块。</param>
+        /// <returns>将应用于 <c>element</c> 的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 为 null。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this Module element)
         {
             return Attribute.GetCustomAttributes(element);
         }
 
+        /// <summary>
+        /// 检索应用于指定成员的自定义特性集合。
+        /// </summary>
+        /// <param name="element">要检查的成员。</param>
+        /// <returns>将应用于 <c>element</c> 的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 为 null。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this MemberInfo element)
         {
             return Attribute.GetCustomAttributes(element);
         }
 
+        /// <summary>
+        /// 检索应用于指定参数的自定义特性的集合。
+        /// </summary>
+        /// <param name="element">要检查的参数。</param>
+        /// <returns>将应用于 <c>element</c> 的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 为 null。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this ParameterInfo element)
         {
             return Attribute.GetCustomAttributes(element);
         }
 
+        /// <summary>
+        /// 检索应用于指定成员的自定义特性集合，并可选择检查该成员的上级。
+        /// </summary>
+        /// <param name="element">要检查的成员。</param>
+        /// <param name="inherit">如果检查 <c>element</c> 的上级，则为 true；否则为 false。</param>
+        /// <returns>将应用于指定的条件匹配的 <c>element</c> 的自定义特性的集合，如果此类特性不存在，则为空集。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 为 null。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this MemberInfo element, bool inherit)
         {
             return Attribute.GetCustomAttributes(element, inherit);

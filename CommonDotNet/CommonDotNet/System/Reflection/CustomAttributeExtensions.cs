@@ -333,6 +333,15 @@ namespace System.Reflection
         {
             return Attribute.IsDefined(element, attributeType);
         }
+
+        /// <summary>
+        /// 确定是否将指定类型的任何自定义属性应用于指定的模块。
+        /// </summary>
+        /// <param name="element">要检查的模块。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <returns>如果将指定类型的特性应用于 <c>element</c>，则为 true；否则为 false。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attribute</c> 不从 Attribute 派生。</exception>
         public static bool IsDefined(this Module element, Type attributeType)
         {
             return Attribute.IsDefined(element, attributeType);

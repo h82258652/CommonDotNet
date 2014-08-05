@@ -275,6 +275,7 @@ namespace System.Reflection
         #endregion
 
         #region APIs that return all attributes of a particular type
+
         /// <summary>
         /// 检索应用于指定程序集的指定类型的自定义特性集合。
         /// </summary>
@@ -287,14 +288,17 @@ namespace System.Reflection
         {
             return Attribute.GetCustomAttributes(element, attributeType);
         }
+
         public static IEnumerable<Attribute> GetCustomAttributes(this Module element, Type attributeType)
         {
             return Attribute.GetCustomAttributes(element, attributeType);
         }
+
         public static IEnumerable<Attribute> GetCustomAttributes(this MemberInfo element, Type attributeType)
         {
             return Attribute.GetCustomAttributes(element, attributeType);
         }
+
         public static IEnumerable<Attribute> GetCustomAttributes(this ParameterInfo element, Type attributeType)
         {
             return Attribute.GetCustomAttributes(element, attributeType);
@@ -304,14 +308,17 @@ namespace System.Reflection
         {
             return (IEnumerable<T>)GetCustomAttributes(element, typeof(T));
         }
+
         public static IEnumerable<T> GetCustomAttributes<T>(this Module element) where T : Attribute
         {
             return (IEnumerable<T>)GetCustomAttributes(element, typeof(T));
         }
+
         public static IEnumerable<T> GetCustomAttributes<T>(this MemberInfo element) where T : Attribute
         {
             return (IEnumerable<T>)GetCustomAttributes(element, typeof(T));
         }
+
         public static IEnumerable<T> GetCustomAttributes<T>(this ParameterInfo element) where T : Attribute
         {
             return (IEnumerable<T>)GetCustomAttributes(element, typeof(T));
@@ -321,6 +328,7 @@ namespace System.Reflection
         {
             return Attribute.GetCustomAttributes(element, attributeType, inherit);
         }
+
         public static IEnumerable<Attribute> GetCustomAttributes(this ParameterInfo element, Type attributeType, bool inherit)
         {
             return Attribute.GetCustomAttributes(element, attributeType, inherit);
@@ -330,6 +338,7 @@ namespace System.Reflection
         {
             return (IEnumerable<T>)GetCustomAttributes(element, typeof(T), inherit);
         }
+
         public static IEnumerable<T> GetCustomAttributes<T>(this ParameterInfo element, bool inherit) where T : Attribute
         {
             return (IEnumerable<T>)GetCustomAttributes(element, typeof(T), inherit);
@@ -363,10 +372,12 @@ namespace System.Reflection
         {
             return Attribute.IsDefined(element, attributeType);
         }
+
         public static bool IsDefined(this MemberInfo element, Type attributeType)
         {
             return Attribute.IsDefined(element, attributeType);
         }
+
         public static bool IsDefined(this ParameterInfo element, Type attributeType)
         {
             return Attribute.IsDefined(element, attributeType);
@@ -376,6 +387,7 @@ namespace System.Reflection
         {
             return Attribute.IsDefined(element, attributeType, inherit);
         }
+
         public static bool IsDefined(this ParameterInfo element, Type attributeType, bool inherit)
         {
             return Attribute.IsDefined(element, attributeType, inherit);

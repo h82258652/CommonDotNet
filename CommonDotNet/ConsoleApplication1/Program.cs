@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Common.Serialization.Json;
+﻿using Common.Serialization.Json;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            ArraySegment<char> x = new ArraySegment<char>();
+
             Lazy<int> l = new Lazy<int>(() =>
             {
                 return DateTime.Now.Second;
@@ -27,7 +22,6 @@ namespace ConsoleApplication1
             Console.ReadKey();
         }
     }
-
 
     public class Test
     {

@@ -9,6 +9,7 @@ namespace ConsoleApplication1
     {
         private static void Main(string[] args)
         {
+            WeakReference<string> xss=new WeakReference<string>("aa");
             ArraySegment<char> x = new ArraySegment<char>();
 
             Lazy<int> l = new Lazy<int>(() =>

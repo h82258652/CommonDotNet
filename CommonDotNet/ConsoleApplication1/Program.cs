@@ -1,4 +1,6 @@
-﻿using Common.Serialization.Json;
+﻿using System.Linq;
+using System.Reflection;
+using Common.Serialization.Json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,17 +11,10 @@ namespace ConsoleApplication1
     {
         private static void Main(string[] args)
         {
-            WeakReference<string> xss=new WeakReference<string>("aa");
-            ArraySegment<char> x = new ArraySegment<char>();
+    var s=       (string) typeof (Environment).GetMethod("GetResourceString", BindingFlags.Static | BindingFlags.NonPublic, null,
+                new[] { typeof(string) }, null).Invoke(null, new object[] { "ArgumentOutOfRange_GenericPositive" });
 
-            Lazy<int> l = new Lazy<int>(() =>
-            {
-                return DateTime.Now.Second;
-            });
-            string s1 = l.SerializeToJson();
-            string s2 = JsonConvert.SerializeObject(l);
-            Console.WriteLine(s1);
-            Console.WriteLine(s2);
+            Console.WriteLine(s);
             Console.ReadKey();
         }
     }

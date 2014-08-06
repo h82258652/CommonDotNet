@@ -75,6 +75,7 @@
     <Compile Include="Serialization\Xml\XmlSerializerHelper.cs" />
     <Compile Include="System\CharExtensions.cs" />
     <Compile Include="System\Collections\Generic\IEnumerableExtensions.cs" />
+    <Compile Include="System\GCExtensions.cs" />
     <Compile Include="System\Int64Extensions.cs" />
     <Compile Include="System\RandomExtensions.cs" />
     <Compile Include="System\RandomHelper.cs" />

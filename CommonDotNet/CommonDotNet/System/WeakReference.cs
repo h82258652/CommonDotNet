@@ -1,4 +1,6 @@
 #if Net40
+
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
@@ -16,6 +18,7 @@ namespace System
     [Serializable]
     public sealed class WeakReference<T> : ISerializable where T : class
     {
+        [SuppressMessage("Microsoft.Performance", "CA1823")]
         internal IntPtr MHandle;
 
         /// <summary>
@@ -113,4 +116,5 @@ namespace System
         private extern bool IsTrackResurrection();
     }
 }
+
 #endif

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime;
 
 // ReSharper disable CheckNamespace
@@ -18,6 +19,8 @@ namespace System.Reflection
         /// <returns>指定对象的属性值。</returns>
         [DebuggerHidden]
         [DebuggerStepThrough]
+        [SuppressMessage("Microsoft.Design","CA1062")]
+        [SuppressMessage("Microsoft.Naming","CA1720")]
         public static object GetValue(this PropertyInfo property, object obj)
         {
             return property.GetValue(obj, null);
@@ -31,6 +34,8 @@ namespace System.Reflection
         /// <param name="value">新的属性值。</param>
         [DebuggerHidden]
         [DebuggerStepThrough]
+        [SuppressMessage("Microsoft.Design", "CA1062")]
+        [SuppressMessage("Microsoft.Naming", "CA1720")]
         [TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")]
         public static void SetValue(this PropertyInfo property, object obj, object value)
         {

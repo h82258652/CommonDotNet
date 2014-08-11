@@ -578,9 +578,9 @@ namespace System
         /// <returns>转换后的字符串。</returns>
         /// <exception cref="ArgumentNullException"><c>value</c> 为 null。</exception>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public static string ToDBC(this string value)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (value == null)
             {
@@ -615,9 +615,9 @@ namespace System
         /// <param name="value">需要转换的字符串。</param>
         /// <returns>转换后的字符串。</returns>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public static string ToDBCSafely(this string value)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             return string.IsNullOrEmpty(value) ? value : ToDBC(value);
         }
@@ -629,9 +629,9 @@ namespace System
         /// <returns>转换后的字符串。</returns>
         /// <exception cref="ArgumentNullException"><c>value</c> 为 null。</exception>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public static string ToSBC(this string value)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (value == null)
             {
@@ -666,9 +666,9 @@ namespace System
         /// <param name="value">需要转换的字符串。</param>
         /// <returns>转换后的字符串。</returns>
         [SuppressMessage("Microsoft.Naming", "CA1709")]
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public static string ToSBCSafely(this string value)
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             return string.IsNullOrEmpty(value) ? value : ToSBC(value);
         }

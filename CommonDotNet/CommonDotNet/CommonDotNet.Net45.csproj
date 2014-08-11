@@ -78,9 +78,11 @@
     <Compile Include="System\Collections\Generic\IEnumerableExtensions.cs" />
     <Compile Include="System\GCExtensions.cs" />
     <Compile Include="System\Int64Extensions.cs" />
+    <Compile Include="System\IO\StreamExtensions.cs" />
     <Compile Include="System\RandomExtensions.cs" />
     <Compile Include="System\RandomHelper.cs" />
     <Compile Include="System\Reflection\CustomAttributeExtensions.cs" />
+    <Compile Include="System\Reflection\MethodInfoExtensions.cs" />
     <Compile Include="System\Reflection\PropertyInfoExtensions.cs" />
     <Compile Include="System\Runtime\CompilerServices\CallerFilePathAttribute.cs" />
     <Compile Include="System\Runtime\CompilerServices\CallerLineNumberAttribute.cs" />

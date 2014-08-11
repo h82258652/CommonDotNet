@@ -41,8 +41,8 @@ namespace System
         public static bool NextBoolean()
         {
             return Rand.NextBoolean();
-        } 
-        
+        }
+
         /// <summary>
         /// 返回随机字节。
         /// </summary>

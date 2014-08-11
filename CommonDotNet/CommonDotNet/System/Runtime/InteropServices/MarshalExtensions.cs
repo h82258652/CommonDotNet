@@ -1,4 +1,6 @@
-﻿// ReSharper disable CheckNamespace
+﻿using System.Diagnostics.CodeAnalysis;
+
+// ReSharper disable CheckNamespace
 namespace System.Runtime.InteropServices
 // ReSharper restore CheckNamespace
 {
@@ -12,6 +14,7 @@ namespace System.Runtime.InteropServices
         /// </summary>
         /// <typeparam name="T">要返回其大小的类型。</typeparam>
         /// <returns><c>T</c> 泛型类型参数指定的类型的大小（以字节为单位）。</returns>
+        [SuppressMessage("Microsoft.Design", "CA1004")]
         public static int SizeOf<T>()
         {
             return Marshal.SizeOf(typeof(T));

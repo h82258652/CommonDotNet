@@ -289,11 +289,29 @@ namespace System.Reflection
             return Attribute.GetCustomAttributes(element, attributeType);
         }
 
+        /// <summary>
+        /// 检索应用于指定模块的指定类型的自定义特性集合。
+        /// </summary>
+        /// <param name="element">要检查的模块。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <returns>将应用于与 <c>element</c> 并与 <c>attributeType</c> 匹配的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this Module element, Type attributeType)
         {
             return Attribute.GetCustomAttributes(element, attributeType);
         }
 
+        /// <summary>
+        /// 检索应用于指定成员的指定类型的自定义特性集合。
+        /// </summary>
+        /// <param name="element">要检查的成员。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <returns>将应用于与 <c>element</c> 并与 <c>attributeType</c> 匹配的自定义特性的集合，如果此类特性不存在，则为空集合。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
+        /// <exception cref="TypeLoadException">无法加载自定义特性类型。</exception>
         public static IEnumerable<Attribute> GetCustomAttributes(this MemberInfo element, Type attributeType)
         {
             return Attribute.GetCustomAttributes(element, attributeType);
@@ -383,11 +401,30 @@ namespace System.Reflection
             return Attribute.IsDefined(element, attributeType);
         }
 
+        /// <summary>
+        /// 指示一个指定类型的自定义特性是否应用于一个指定的数字，并选择性地应用于其的上级。
+        /// </summary>
+        /// <param name="element">要检查的成员。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <param name="inherit">如果检查 <c>element</c> 的上级，则为 true；否则为 false。</param>
+        /// <returns>如果将指定类型的特性应用于 <c>element</c>，则为 true；否则为 false。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
+        /// <exception cref="NotSupportedException"><c>element</c> 不是构造函数、方法、属性、事件、类型或字段。</exception>
         public static bool IsDefined(this MemberInfo element, Type attributeType, bool inherit)
         {
             return Attribute.IsDefined(element, attributeType, inherit);
         }
 
+        /// <summary>
+        /// 指示一个指定类型的自定义特性是否应用于一个指定的参数，并选择性地应用于其的上级。
+        /// </summary>
+        /// <param name="element">要检查的参数。</param>
+        /// <param name="attributeType">要搜索的特性类型。</param>
+        /// <param name="inherit">如果检查 <c>element</c> 的上级，则为 true；否则为 false。</param>
+        /// <returns>如果将指定类型的特性应用于 <c>element</c>，则为 true；否则为 false。</returns>
+        /// <exception cref="ArgumentNullException"><c>element</c> 或 <c>attributeType</c> 为 null。</exception>
+        /// <exception cref="ArgumentException"><c>attributeType</c> 不从 Attribute 派生。</exception>
         public static bool IsDefined(this ParameterInfo element, Type attributeType, bool inherit)
         {
             return Attribute.IsDefined(element, attributeType, inherit);

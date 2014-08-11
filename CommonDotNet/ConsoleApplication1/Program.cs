@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Reflection;
-using Common.Serialization.Json;
+using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,38 +13,34 @@ namespace ConsoleApplication1
     {
         private static void Main(string[] args)
         {
-    var s=       (string) typeof (Environment).GetMethod("GetResourceString", BindingFlags.Static | BindingFlags.NonPublic, null,
-                new[] { typeof(string) }, null).Invoke(null, new object[] { "ArgumentOutOfRange_GenericPositive" });
+            var m = typeof (Task).GetMethods(BindingFlags.Static | BindingFlags.NonPublic).First(temp => temp.Name ==
+                                                                                                         "FromCancellation" &&
+                                                                                                         temp
+                                                                                                             .IsGenericMethod &&
+                                                                                                         temp
+                                                                                                             .GetParameters
+                                                                                                             ()[0]
+                                                                                                             .ParameterType ==
+                                                                                                         typeof
+                                                                                                             (
+                                                                                                             CancellationToken
+                                                                                                             ));
+            Console.WriteLine(m);
+            Console.WriteLine(m.MakeGenericMethod(typeof(int)));
 
-            Console.WriteLine(s);
+            var xxx =
+                typeof (Task).GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
+                    .Where(temp => temp.Name == "FromCancellation" && temp.GetParameters()[0].ParameterType == typeof(CancellationToken));
+            foreach (var methodInfo in xxx)
+            {
+                Console.WriteLine(methodInfo.IsGenericMethod);
+                Console.WriteLine(methodInfo.IsGenericMethodDefinition);
+                Console.WriteLine();
+            }
+
+
             Console.ReadKey();
         }
     }
 
-    public class Test
-    {
-        public int A
-        {
-            get;
-            set;
-        }
-
-        public string B
-        {
-            get;
-            set;
-        }
-
-        public DateTime C
-        {
-            get;
-            set;
-        }
-
-        public List<double> D
-        {
-            get;
-            set;
-        }
-    }
 }

@@ -9,12 +9,12 @@ namespace Common.Serialization.Json
         /// <summary>
         /// 缓存 Lazy 类的 IsValueCreated 属性。
         /// </summary>
-        internal static volatile Dictionary<Type, PropertyInfo> LazyTypeIsValueCreatedProperties = new Dictionary<Type, PropertyInfo>();
+        private static volatile Dictionary<Type, PropertyInfo> _lazyTypeIsValueCreatedProperties = new Dictionary<Type, PropertyInfo>();
 
         /// <summary>
         /// 缓存 Lazy 类的 Value 属性。
         /// </summary>
-        internal static volatile Dictionary<Type, PropertyInfo> LazyTypeValueProperties = new Dictionary<Type, PropertyInfo>();
+        private static volatile Dictionary<Type, PropertyInfo> _lazyTypeValueProperties = new Dictionary<Type, PropertyInfo>();
 
         /// <summary>
         /// 缓存类的字段。
@@ -25,6 +25,22 @@ namespace Common.Serialization.Json
         /// 缓存类的属性。
         /// </summary>
         private static volatile Dictionary<Type, PropertyInfo[]> _typeProperties = new Dictionary<Type, PropertyInfo[]>();
+
+        internal static Dictionary<Type, PropertyInfo> LazyTypeIsValueCreatedProperties
+        {
+            get
+            {
+                return _lazyTypeIsValueCreatedProperties;
+            }
+        }
+
+        internal static Dictionary<Type, PropertyInfo> LazyTypeValueProperties
+        {
+            get
+            {
+                return _lazyTypeValueProperties;
+            }
+        }
 
         internal static FieldInfo[] GetTypeFieldInfos(Type type)
         {

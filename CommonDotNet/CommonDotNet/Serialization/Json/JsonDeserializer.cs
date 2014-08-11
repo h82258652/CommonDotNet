@@ -33,7 +33,7 @@ namespace Common.Serialization.Json
             {
                 return _currentStackLevel;
             }
-            set
+            private set
             {
                 _currentStackLevel = value;
                 if (_currentStackLevel > MaxStackLevel)
@@ -591,7 +591,7 @@ namespace Common.Serialization.Json
 
                 #region 字段
 
-                var fields =JsonCache.GetTypeFieldInfos(type);
+                var fields = JsonCache.GetTypeFieldInfos(type);
                 foreach (var field in fields)
                 {
                     var attribute = field.GetCustomAttributes(typeof(JsonAttribute), false).FirstOrDefault() as JsonAttribute;

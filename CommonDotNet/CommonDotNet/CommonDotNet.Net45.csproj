@@ -63,6 +63,7 @@
     <Compile Include="Serialization\Json\EnumFormat.cs" />
     <Compile Include="Serialization\Json\JsonCountException.cs" />
     <Compile Include="Serialization\Json\JsonDeserializeException.cs" />
+    <Compile Include="Serialization\Json\JsonDeserializerV2.cs" />
     <Compile Include="Serialization\Json\JsonKeyRepeatException.cs" />
     <Compile Include="Serialization\Json\JsonStackOverFlowException.cs" />
     <Compile Include="Serialization\Json\JsonAttribute.cs" />

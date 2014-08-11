@@ -13,34 +13,17 @@ namespace ConsoleApplication1
     {
         private static void Main(string[] args)
         {
-            var m = typeof (Task).GetMethods(BindingFlags.Static | BindingFlags.NonPublic).First(temp => temp.Name ==
-                                                                                                         "FromCancellation" &&
-                                                                                                         temp
-                                                                                                             .IsGenericMethod &&
-                                                                                                         temp
-                                                                                                             .GetParameters
-                                                                                                             ()[0]
-                                                                                                             .ParameterType ==
-                                                                                                         typeof
-                                                                                                             (
-                                                                                                             CancellationToken
-                                                                                                             ));
-            Console.WriteLine(m);
-            Console.WriteLine(m.MakeGenericMethod(typeof(int)));
-
-            var xxx =
-                typeof (Task).GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
-                    .Where(temp => temp.Name == "FromCancellation" && temp.GetParameters()[0].ParameterType == typeof(CancellationToken));
-            foreach (var methodInfo in xxx)
-            {
-                Console.WriteLine(methodInfo.IsGenericMethod);
-                Console.WriteLine(methodInfo.IsGenericMethodDefinition);
-                Console.WriteLine();
-            }
+            var x = typeof (TT).IsValueType;
+            Console.WriteLine(x);
 
 
             Console.ReadKey();
         }
+    }
+
+    enum TT
+    {
+        AA=0
     }
 
 }

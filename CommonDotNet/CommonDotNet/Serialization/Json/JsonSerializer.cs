@@ -13,7 +13,7 @@ namespace Common.Serialization.Json
 {
     internal class JsonSerializer
     {
-        private static readonly DateTime Date1970 = new DateTime(1970, 1, 1, 0, 0, 0);
+        private static readonly long DatetimeMinTimeTicks = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
 
         private StringBuilder _buffer;
 
@@ -234,7 +234,7 @@ namespace Common.Serialization.Json
                 case DateTimeFormat.Create:
                     {
                         _buffer.Append("new Date(");
-                        _buffer.Append((dateTime.ToUniversalTime() - Date1970).Ticks / 10000);
+                        _buffer.Append((dateTime.ToUniversalTime().Ticks - DatetimeMinTimeTicks) / 1000);
                         _buffer.Append(')');
                         break;
                     }
@@ -248,7 +248,7 @@ namespace Common.Serialization.Json
                 case DateTimeFormat.Function:
                     {
                         _buffer.Append("\"\\/Date(");
-                        _buffer.Append((dateTime.ToUniversalTime() - Date1970).Ticks / 10000);
+                        _buffer.Append((dateTime.ToUniversalTime().Ticks - DatetimeMinTimeTicks) / 10000);
                         _buffer.Append(")\\/\"");
                         break;
                     }

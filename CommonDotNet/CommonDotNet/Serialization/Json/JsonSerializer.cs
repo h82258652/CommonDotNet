@@ -103,6 +103,7 @@ namespace Common.Serialization.Json
         {
             switch (c)
             {
+#warning need to fix \0(to \u0000) and \a and other
                 case '\"':
                     {
                         _buffer.Append("\"\\\"\"");
@@ -862,6 +863,7 @@ namespace Common.Serialization.Json
             {
                 switch (c)
                 {
+#warning see serializechar
                     case '\"':
                         {
                             _buffer.Append("\\\"");
